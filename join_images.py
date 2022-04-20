@@ -47,11 +47,14 @@ def main():
     img = cv2.imread('./img/house.jpg')
     img2 = cv2.imread('./img/donald.jpg')
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    horizontal = np.hstack((img, img))
-    vertical = np.vstack((img, img))
+    img_gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
-    cv2.imshow("Stacked 1", horizontal)
-    cv2.imshow("Stacked 2", vertical)
+    stacked_imgs = stack_images(0.5, ([img, img2], [img_gray, img_gray2]))
+    # horizontal = np.hstack((img, img))
+    # vertical = np.vstack((img, img))
+
+    cv2.imshow("Stacked 1", stacked_imgs)
+    #cv2.imshow("Stacked 2", vertical)
 
     cv2.waitKey(0)
 
